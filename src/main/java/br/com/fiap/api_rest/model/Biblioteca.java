@@ -7,14 +7,13 @@ import java.util.List;
 @Entity
 public class Biblioteca {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY);
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
-    @OneToMany
-    @JoinColumn(name = "id_biblioteca")
+    @OneToMany(mappedBy = "biblioteca")
     private List<Livro> livros;
 
     public Long getId() {

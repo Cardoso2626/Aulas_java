@@ -8,11 +8,9 @@ public class LivroResponse {
     private Link link;
 
     public LivroResponse(Long id, String infoLivro) {
-        this.infoLivro = infoLivro;
         this.id = id;
-
+        this.infoLivro = infoLivro;
     }
-
 
     public Long getId() {
         return id;

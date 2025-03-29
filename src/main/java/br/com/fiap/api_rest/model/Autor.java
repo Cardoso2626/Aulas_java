@@ -6,17 +6,22 @@ import java.util.List;
 
 @Entity
 public class Autor {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "autor_livros",
-            joinColumns = @JoinColumns(name = "id_livros", referencedColumn = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id_autor", referencedColumnName = "id")
-    )
+    @ManyToMany
+    @JoinTable(name = "autor_livro",
+            joinColumns = @JoinColumn(name = "id_livro", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_autor", referencedColumnName = "id"))
     private List<Livro> livros;
+
+    public Autor() {
+    }
+
+    public Autor(String nome) {
+        this.nome = nome;
+    }
 
     public Long getId() {
         return id;
